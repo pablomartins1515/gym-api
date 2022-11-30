@@ -1,6 +1,6 @@
 export type ExerciseDTO = {
-    id: string;   
-    demo: string;
+    id: string;
+    demo: string;  
     group: string;      
     name: string;
     repetitions: string;

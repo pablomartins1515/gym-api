@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import {VStack, HStack, FlatList, Heading, Text, useToast, Toast } from 'native-base';
+import {VStack, HStack, FlatList, Heading, Text, useToast } from 'native-base';
 
 import { appNavigatorRoutesProps } from "@routes/app.routes"
 
@@ -23,16 +23,17 @@ export function Home (){
     const navigation = useNavigation<appNavigatorRoutesProps>();
 
     function handleOpenExerciseDetails (exerciseId: string) {
-        navigation.navigate('exercise', {exerciseId});
+        navigation.navigate('exercise', { exerciseId });
         }
 
     async function fetchGroups (){
         try {
             const response = await api.get('./groups');
-            setGroups(response.data)
+            setGroups(response.data);
+
         } catch (error) {
             const isAppError = error instanceof AppError;
-            const title = isAppError ? error.message : 'Não foi possível carregar os grupos de Exercícios';
+            const title = isAppError ? error.message : 'Não foi possível carregar os grupos musculares';
 
             toast.show({
                 title,
@@ -51,7 +52,7 @@ export function Home (){
 
         } catch (error) {
             const isAppError = error instanceof AppError;
-            const title = isAppError ? error.message : 'Não foi possível carregar os Exercícios';
+            const title = isAppError ? error.message : 'Não foi possível carregar os exercícios';
 
             toast.show({
                 title,
@@ -109,8 +110,8 @@ export function Home (){
                 <FlatList 
                     data={exercises}
                     keyExtractor={ item => item.id }
-                    renderItem={({ item }) =>( <
-                        ExerciseCard 
+                    renderItem={({ item }) => ( 
+                        <ExerciseCard 
                         onPress={() => handleOpenExerciseDetails(item.id)}
                         data={item}
                         />

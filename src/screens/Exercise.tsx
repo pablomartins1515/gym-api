@@ -34,10 +34,10 @@ export function Exercise (){
         navigation.goBack();
     }
 
-    async function fetchExerciseDetais() {
+    async function fetchExerciseDetails() {
         try {
             const response = await api.get(`/exercises/${exerciseId}`);
-            setExercise(response.data)
+            setExercise(response.data);
 
             } catch (error) {
                 const isAppError = error instanceof AppError;
@@ -52,7 +52,7 @@ export function Exercise (){
     }
 
     useEffect(() => {
-        fetchExerciseDetais();
+        fetchExerciseDetails();
     }, [exerciseId]);
 
     return (
@@ -77,12 +77,11 @@ export function Exercise (){
             </VStack>
             
             <VStack p={8}>
-                    <Box>                     
+                <Box rounded='lg' mb={3} overflow='hidden'>                     
                             <Image 
                                 w="full"
                                 h={80}
-                                source= {{ uri: `${api.defaults.baseURL}/exercise/demo/${exercise.demo}`}}
-                                mb={3}
+                                source= {{ uri: `${api.defaults.baseURL}/exercise/demo/${exercise.demo}`}}                                
                                 alt="Nome do exercício"                   
                                 resizeMode="cover"
                                 rounded="lg"

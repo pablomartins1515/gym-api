@@ -13,9 +13,9 @@ import { Exercise } from '@screens/Exercise';
 
 type AppRoutes = {
     home: undefined;
+    exercise: { exerciseId: string };
     profile: undefined;
-    history: undefined;   
-    exercise: {exerciseId: string};
+    history: undefined;  
 }
 
 export type appNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;

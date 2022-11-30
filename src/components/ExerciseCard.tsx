@@ -6,7 +6,7 @@ import { api } from "@services/api";
 import { ExerciseDTO } from "@dtos/ExerciseDTO";
 
 type Props = TouchableOpacityProps & {
-    data: ExerciseDTO
+    data: ExerciseDTO;
 }
 
 export function ExerciseCard ({data, ...rest} : Props) {
@@ -19,6 +19,7 @@ export function ExerciseCard ({data, ...rest} : Props) {
                         h="16"
                         rounded="md"
                         mr={4}
+                        resizeMode='center'
                 />
             <VStack flex={1}>
                 <Heading fontSize="lg" color="white" fontFamily="heading"> 
